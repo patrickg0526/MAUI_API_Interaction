@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiItemsApp.ViewModels"
+             x:Class="MauiItemsApp.Views.LoginPage"
+             x:DataType="vm:LoginViewModel"
+             Title="Login">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,10" Spacing="16" MaximumWidthRequest="500">
+            <Label
+                Text="Patrick Gonzalez"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+            <Label
+                Text="Wk 4 Performance Assessment"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Margin="0,0,0,10" />
+
+            <Label Text="User Name" />
+            <Entry Text="{Binding UserName}" Placeholder="Enter your user name" />
+
+            <Label Text="Password" />
+            <Entry Text="{Binding Password}" Placeholder="Enter your password" IsPassword="True" />
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button Grid.Column="0" Text="Login" Command="{Binding LoginCommand}" IsEnabled="{Binding IsNotBusy}" />
+                <Button Grid.Column="1" Text="Cancel" Command="{Binding CancelCommand}"
+                        BackgroundColor="{StaticResource Gray500}" TextColor="White" />
+            </Grid>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+            <Label Text="{Binding Message}" TextColor="{Binding MessageColor}" IsVisible="{Binding HasMessage}"
+                   HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
